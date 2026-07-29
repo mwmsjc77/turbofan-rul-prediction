@@ -27,3 +27,19 @@ df['RUL'] = df['max_cycle'] - df['cycle']
 df = df.drop('max_cycle', axis=1)
 
 print(df[['engine_id', 'cycle', 'RUL']].head(10))
+# remove sensores que não variam (não ajudam na análise)
+sensores = [col for col in df.columns if 'sensor' in col]
+sensores_constantes = [col for col in sensores if df[col].nunique() == 1]
+
+print(f"Sensores sem variação (serão removidos): {sensores_constantes}")
+
+df = df.drop(columns=sensores_constantes)
+# remove sensores que não variam (não ajudam na análise)
+sensores = [col for col in df.columns if 'sensor' in col]
+sensores_constantes = [col for col in sensores if df[col].nunique() == 1]
+
+print(f"Sensores sem variação (serão removidos): {sensores_constantes}")
+
+df = df.drop(columns=sensores_constantes)
+df.to_parquet('dados_tratados.parquet', index=False)
+print("Dataset salvo em dados_tratados.parquet")

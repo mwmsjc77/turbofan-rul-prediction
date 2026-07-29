@@ -18,3 +18,12 @@ print(df.info())
 print(df.describe())
 print("Valores nulos por coluna:")
 print(df.isnull().sum())
+# calcula o RUL: quantos ciclos faltam até a falha do motor
+rul = df.groupby('engine_id')['cycle'].max().reset_index()
+rul.columns = ['engine_id', 'max_cycle']
+
+df = df.merge(rul, on='engine_id', how='left')
+df['RUL'] = df['max_cycle'] - df['cycle']
+df = df.drop('max_cycle', axis=1)
+
+print(df[['engine_id', 'cycle', 'RUL']].head(10))

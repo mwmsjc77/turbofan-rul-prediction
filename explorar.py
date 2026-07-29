@@ -43,3 +43,15 @@ print(f"Sensores sem variação (serão removidos): {sensores_constantes}")
 df = df.drop(columns=sensores_constantes)
 df.to_parquet('dados_tratados.parquet', index=False)
 print("Dataset salvo em dados_tratados.parquet")
+import matplotlib.pyplot as plt
+
+# gráfico: como um sensor se comporta ao longo do tempo, no motor 1
+motor_1 = df[df['engine_id'] == 1]
+
+plt.figure(figsize=(10, 5))
+plt.plot(motor_1['cycle'], motor_1['sensor_2'])
+plt.xlabel('Ciclo')
+plt.ylabel('Valor do sensor_2')
+plt.title('Degradação do sensor_2 ao longo do tempo - Motor 1')
+plt.savefig('grafico_degradacao.png')
+print("Gráfico salvo em grafico_degradacao.png")

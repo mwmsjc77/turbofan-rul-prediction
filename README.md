@@ -25,3 +25,6 @@ Python, Pandas
 ## Como rodar
 ```bash
 ```
+## Resultados
+
+![Gráfico de degradação do sensor](grafico_degradacao.png)

@@ -14,15 +14,14 @@ de manutenção preditiva.
 ## Etapas
 - [x] Carregar e nomear colunas do dataset
 - [x] Checar valores nulos e tipos de dados
-- [ ] Calcular RUL por motor
-- [ ] Remover sensores sem variação
-- [ ] Salvar dataset tratado em Parquet
-- [ ] Gráfico de degradação de sensor
+- [x] Calcular RUL por motor
+- [x] Remover sensores sem variação
+- [x] Salvar dataset tratado em Parquet
+- [x] Gráfico de degradação de sensor
 
 ## Tecnologias
 Python, Pandas
 
 ## Como rodar
 ```bash
-python3 explorar.py
 ```
